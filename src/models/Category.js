@@ -28,17 +28,15 @@ const categorySchema = mongoose.Schema(
                 name: {
                     type: String,
                 },
-                message: {
+                challenge: {
                     type: String
                 },
-                flag: {
+                value: {
                     type: String
                 },
-                points: {
-                    type: Number,
-                    default: 0
+                image:{
+                    type:String
                 }
-
             }
         ]
 

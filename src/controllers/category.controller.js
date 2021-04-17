@@ -38,6 +38,32 @@ const getCategories = catchAsync(async (req, res) => {
     }
 });
 
+const createChallenge = catchAsync(async (req, res) => {
+
+
+    try {
+        const categoryid = req.body.category;
+        const challenge = {
+            ...req.body
+        }
+        delete challenge.category
+        const category = await Category.findOneAndUpdate({ _id: categoryid }, { $push:{ challenges:challenge} })
+        if (category) {
+            res.status(200).send({ success: true, category: category });
+
+        } else {
+            res.status(200).send({ success: false, message: "cannot find category with given id" });
+
+        }
+
+
+    } catch (err) {
+        res.status(400).send({ success: false, message: err.message })
+        console.log("err", err)
+
+    }
+});
+
 // const getUser = catchAsync(async (req, res) => {
 //   const user = await userService.getUserById(req.params.userId);
 //   if (!user) {
@@ -59,5 +85,6 @@ const getCategories = catchAsync(async (req, res) => {
 module.exports = {
     createCategory,
     getCategories,
+    createChallenge
 
 };

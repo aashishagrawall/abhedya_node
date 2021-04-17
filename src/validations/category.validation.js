@@ -5,11 +5,20 @@ const createCategory = {
     body: Joi.object().keys({
         name: Joi.string().required(),
         facts: Joi.string().required(),
-        description: Joi.string().required(),
-        image: Joi.string().required()
+        details: Joi.string().required(),
+        image: Joi.string()
+    }),
+};
+const createChallenge = {
+    body: Joi.object().keys({
+        name: Joi.string().required(),
+        challenge: Joi.string().required(),
+        value: Joi.string().required(),
+        category:Joi.string().required()
     }),
 };
 
 module.exports = {
     createCategory,
+    createChallenge
 };

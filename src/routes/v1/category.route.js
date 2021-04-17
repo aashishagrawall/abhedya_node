@@ -10,6 +10,10 @@ router
   .route('/')
   .post(auth('createCategory'), validate(categoryValidation.createCategory), categoryController.createCategory)
   .get(auth('getCategories'), categoryController.getCategories);
+  router
+  .route('/challenge')
+  .post(auth('createChallenge'), validate(categoryValidation.createChallenge), categoryController.createChallenge)
+
 
 
 module.exports = router;
